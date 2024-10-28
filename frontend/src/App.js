@@ -13,7 +13,7 @@ function App() {
 
   const fetchStudents = async () => {
     try {
-      const response = await axios.get("/api/students");
+      const response = await axios.get("http://localhost:5000/api/students");
       setStudents(response.data);
     } catch (error) {
       console.error("Error fetching students:", error);
@@ -23,11 +23,14 @@ function App() {
   const addOrUpdateStudent = async (student) => {
     if (editingStudent) {
       // Update existing student
-      await axios.put(`/api/students/${editingStudent._id}`, student);
+      await axios.put(
+        `http://localhost:5000/api/students/${editingStudent._id}`,
+        student
+      );
       setEditingStudent(null);
     } else {
       // Add new student
-      await axios.post("/api/students", student);
+      await axios.post("http://localhost:5000/api/students", student);
     }
     fetchStudents();
   };
@@ -37,7 +40,7 @@ function App() {
   };
 
   const handleDelete = async (studentId) => {
-    await axios.delete(`/api/students/${studentId}`);
+    await axios.delete(`http://localhost:5000/api/students/${studentId}`);
     fetchStudents();
   };
 

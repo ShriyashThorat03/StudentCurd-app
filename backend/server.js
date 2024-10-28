@@ -9,10 +9,9 @@ app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect("mongodb+srv://shriyash:Maths@2903@cluster0.mongodb.net/student_management?retryWrites=true&w=majority", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose
+  .connect("mongodb://localhost:27017/StudentDB", {
+  })
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error(err));
 
